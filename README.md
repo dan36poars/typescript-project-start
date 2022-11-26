@@ -7,6 +7,17 @@
 ```bash
     $ git init
 ```
+
+- [x] create .vscode folder
+go to menu vscode and type `workspace settings`
+add font family fira code and enable the ligatures.
+```json
+{
+    "editor.fontFamily": "'Fira Code'",
+    "editor.fontLigatures": true    
+}
+```
+
 <br/>
 
 - [x] initialize yarn init
@@ -32,6 +43,11 @@
 
 - [x] create the src folder.
 - [x] create the src/main.ts file
+- [x] create src/@types folder
+- [x] create src/controllers
+- [x] create src/models
+- [x] create src/views
+
 
 <br/>
 
@@ -59,4 +75,29 @@
 
 - [x] add command line script in package.json
 
-`"dev" : "ts-node-dec --respawn --transpile-only --ignore-watch node_modules --no-notify src/main.ts"`
+```json
+"dev" : "ts-node-dec --respawn --transpile-only --ignore-watch node_modules --no-notify src/main.ts",
+"build" : "tsc",
+"prod" : "node dist/main.js"
+```
+
+<br>
+
+Add more options in tsconfig.ts:
+
+```typescript
+{
+    "rootDir" : "./src",
+    "outDir" : "./dist",
+    "lib": ["ES6"],
+    "allowJs": true,
+    "removeComments": true,
+     "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/@types"
+    ],
+    "resolveJsonModule": true,
+}
+```
