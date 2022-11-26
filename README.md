@@ -123,3 +123,14 @@ add in tsconfig.json:
     "@config/*" : ["src/config/*"],
 }
 ```
+<br/>
+
+- [x] add tsconfig-paths
+to enable the ts-node-dev package can be translate the path modules in dev environment.
+```bash
+    $ yarn add -D tsconfig-paths
+```
+add one more option in package.json script dev command
+```json
+"dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules --no-notify src/main.ts",
+```
