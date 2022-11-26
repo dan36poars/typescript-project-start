@@ -47,6 +47,7 @@ add font family fira code and enable the ligatures.
 - [x] create src/controllers
 - [x] create src/models
 - [x] create src/views
+- [x] create src/config
 
 
 <br/>
@@ -58,7 +59,7 @@ add font family fira code and enable the ligatures.
 ```
 > if `tsc` is installed with global, else type `$ yarn tsc --init`
 
-<br>
+<br/>
 
 - [x] install express types
 
@@ -71,7 +72,7 @@ add font family fira code and enable the ligatures.
 ```bash
     $ yarn add -D ts-node-dev
 ```
-<br>
+<br/>
 
 - [x] add command line script in package.json
 
@@ -81,7 +82,7 @@ add font family fira code and enable the ligatures.
 "prod" : "node dist/main.js"
 ```
 
-<br>
+<br/>
 
 Add more options in tsconfig.ts:
 
@@ -99,5 +100,26 @@ Add more options in tsconfig.ts:
       "./src/@types"
     ],
     "resolveJsonModule": true,
+}
+```
+
+<br/>
+
+- [x] create path modules (alias)
+
+change: `../models/User.ts` to `@model/User.ts`
+
+Create files:
+- ./src/controllers/UsersController.ts
+- ./src/controllers/Users.ts
+
+add in tsconfig.json:
+```json
+"baseUrl" : "./", // need it for paths modules
+"paths": {
+    "@controllers/*" : ["src/controllers/*"],
+    "@models/*" : ["src/models/*"],
+    "@views/*" : ["src/views/*"],
+    "@config/*" : ["src/config/*"],
 }
 ```
