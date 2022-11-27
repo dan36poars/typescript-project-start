@@ -315,7 +315,57 @@ add in `jest.config.ts` file
     }
     ...   
 ```
+<br/>
 
+## Config Babel
 
+- [x] install resources to transpile to js and paths modules resolved
 
+```bash
+    $ yarn add -D @babel/core @babel/cli @babel/preset-env @babel/node @babel/preset-typescript babel-plugin-module-resolver
+```
+<br/>
 
+- [x] create `babel.config.json` file
+
+```json
+{
+    {
+    "presets": [
+        [
+        "@babel/preset-env",
+        {
+            "targets": { "node": "current" }
+        }
+        ],
+        "@babel/preset-typescript"
+    ],
+    "plugins": [
+        [
+        "module-resolver",
+        {
+            "alias": {
+            "@controllers": "./src/controllers",
+            "@models": "./src/models",
+            "@views": "./src/views",
+            "@config": "./src/config"
+            }
+        }
+        ]
+    ],
+    "ignore": ["**/*.spec.ts", "**/*.test.ts"]
+    }
+}
+
+```
+
+- [x] add script command in package.json to build with babel
+
+```json
+    ...
+    "build" : "babel src --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored"
+    ...
+```
+
+>***Tip***
+>in `tsconfig.ts` file exclude the `node_modules` folder and include `./src/**/*` folder using the **exclude** and ***include*** options.
