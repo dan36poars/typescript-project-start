@@ -134,3 +134,43 @@ add one more option in package.json script dev command
 ```json
 "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --ignore-watch node_modules --no-notify src/main.ts",
 ```
+
+## Config eslint
+
+- [x] add eslint
+```bash
+    $ yarn add -D  eslint
+```
+or
+
+```bash
+    $ yarn create @eslint/config
+```
+
+- [x] install the eslint extension in vscode.
+
+<br/>
+
+- [x] install typescript parser
+
+```bash
+    $ yarn add -D @typescript-eslint/parser
+```
+<br/>
+
+- [x] add parser in .eslintrc.json file
+
+```json
+{
+    ...
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        ...
+        "project" : "./tsconfig.json" // path to tsconfig.json
+        ...
+    },
+    ...
+}
+```
+
+
