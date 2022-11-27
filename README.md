@@ -1,6 +1,6 @@
 # Start Project
 
-## Steps
+## Config Typescript
 
 - [x] initialize git
 
@@ -14,7 +14,7 @@ add font family fira code and enable the ligatures.
 ```json
 {
     "editor.fontFamily": "'Fira Code'",
-    "editor.fontLigatures": true    
+    "editor.fontLigatures": true 
 }
 ```
 
@@ -115,6 +115,7 @@ Create files:
 
 add in tsconfig.json:
 ```json
+...
 "baseUrl" : "./", // need it for paths modules
 "paths": {
     "@controllers/*" : ["src/controllers/*"],
@@ -122,6 +123,7 @@ add in tsconfig.json:
     "@views/*" : ["src/views/*"],
     "@config/*" : ["src/config/*"],
 }
+...
 ```
 <br/>
 
@@ -139,7 +141,7 @@ add one more option in package.json script dev command
 
 - [x] add eslint
 ```bash
-    $ yarn add -D  eslint
+    $ yarn add -D eslint
 ```
 or
 
@@ -172,5 +174,63 @@ or
     ...
 }
 ```
+<br/>
+
+## Config prettier
+
+- [x] add the prettier and the config files extends to typescript
+
+```bash
+    $ yarn add -D prettier eslint-config-prettier
+```
+<br/>
+
+- [x] create the `.prettierrc.json` file
+
+```json
+{
+    "semi": true,
+    "singleQuote": false,
+    "tabWidth": 2,
+    "trailingComma": "es5"
+}
+```
+<br/>
+
+- [x] create the `.prettierignore` file
+put the files or folders that you won't format
+
+<br/>
+
+- [x] add the option in `.eslintrc.json` file
+
+```json
+{
+  "extends": [
+    "some-other-config-you-use",
+    "prettier" // always in the end
+  ]
+}
+```
+
+<br/>
+
+- [x] enable the option in `tsconfig.json`:
+`"strictNullChecks": true`
+
+<br/>
+
+- [x] created the file ./vscode/settings.json
+
+```json
+{
+    ...
+    "editor.formatOnSave": true,
+    "[typescript]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+    ...
+}
 
 
