@@ -232,5 +232,90 @@ put the files or folders that you won't format
     }
     ...
 }
+```
+<br/>
+
+## Config Jest
+
+- [x] install  jest
+
+```bash
+    $ yarn add -D jest
+```
+
+<br/>
+
+- [x] create jest config file
+
+```bash
+    $ yarn jest --init
+```
+
+<br/>
+
+- [x] install ts-jest to work with typescripty
+
+```bash
+    $ yarn add -D ts-jest
+```
+
+add the option preset in jest.config.ts file:
+```json
+    preset: "ts-jest",
+    testEnvironment: "node",
+```
+
+<br/>
+
+- [x] install typescript type check for jest typescripty
+
+```bash
+    $ yarn add -D @types/jest
+```
+
+<br/>
+
+- [x] create src/tests/firstTest.spec.ts file
+
+```typescript
+    import { User } from "@models/User";
+
+    test("Test API", async () => {
+        const user = await new User();
+        user.name = "foo";
+        expect(user.name).toEqual("foo");
+    });
+```
+<br/>
+
+- [x] add the `jest` option in environment `.eslintrc.json` file
+
+```json
+    ...
+    "env": {
+        ...
+        "jest": true,
+        ...
+    },
+    ...
+```
+<br/>
+
+- [x] config jest to resolve path modules
+
+add in `jest.config.ts` file
+
+```typescript
+    ...
+    moduleNameMapper: {
+        "@controllers/(.*)" : "<rootDir>/src/controllers/$1",
+        "@models/(.*)" : "<rootDir>/src/models/$1",
+        "@views/(.*)" : "<rootDir>/src/views/$1",
+        "@config/(.*)" : "<rootDir>/src/config/$1"
+    }
+    ...   
+```
+
+
 
 

@@ -5,3 +5,4 @@ tsconfig.json
 .eslintrc.json
 node_modules/**/*
 .vscode/**/*
+jest.config.ts
